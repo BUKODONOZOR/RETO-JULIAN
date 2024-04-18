@@ -27,69 +27,85 @@ let Tiendadesuveniles = [
         Nombre: "Chocolates",
         precio: "15000",
         Disponible : 2
+    },
+
+    item2 = {
+        Nombre: "Matrioscas",
+        precio: "150000",
+        Disponible: 4
     }
 ]
 
 
+
 const getSuvenir = () =>{
     let NombreSuvenir = document.getElementById("NombreSuvenir").value;
-    let ValorSuvenir = document.getElementById("ValorSuvenir").value;
-  
-
-    
+    let cantidad = document.getElementById("ValorSuvenir").value;
     
 
-    Stock.addEventListener("click", function clicks() {
-        if(Stock.checked){
-            selected = true;
-            console.log("HOLA");
-             
-        }else{
-            selected = false;
-            console.log("NO HOLA");
+   
 
-        }
     
-       
-    });
+    const ValorClaveN ='Nombre';
+    const  ValoresdeClaveN  = Tiendadesuveniles.map(item => item[ValorClaveN]);
     
 
-    let suvenir = {
-        Nombre : NombreSuvenir,
-        ValorSuvenir : ValorSuvenir, 
-        Disponible: selected ,
+    if(ValoresdeClaveN.includes(NombreSuvenir)){
+        
+        
+        
+        Tiendadesuveniles.forEach(element => {
+           
+            if(element.Nombre == NombreSuvenir){
+                if(element.Disponible >0){
+                    console.log("Hay producto")
+                    element.Disponible = element.Disponible - cantidad;
+                
+                    let suvenir = {
+                        Nombre : NombreSuvenir,
+                        ValorSuvenir : element.precio, 
+                        cantidad: 1,
+                        Disponible: selected ,
+                    }
+    
+        
+                    diccionario_Suvenires.push(suvenir);
+                    console.log(diccionario_Suvenires);
+
+
+                    const ul = document.getElementById('Lista');
+                    const nuevoElementoLI = document.createElement('li');
+                    const contenido = document.createTextNode(suvenir.Nombre);
+                    nuevoElementoLI.appendChild(contenido);
+                    ul.appendChild(nuevoElementoLI)
+            
+            
+                
+                }
+                else{
+                    document.getElementById("Alert2").innerHTML = "NO HAY PRODUCTOgi";
+                }
+
+            }
+            
+        });
+        console.log(Tiendadesuveniles);
+        
+
+    
+ 
+    
+        
+      
+
+    }
+    else{
+        document.getElementById("Alert2").innerHTML = "NO EXISTE EN LA TIENDA DE SUVENIRES";
+
     }
 
-
-    
-    diccionario_Suvenires.push(suvenir);
-
-    
   
-    claveaSumar = 'ValorSuvenir';
-    const valoresDeClave = diccionario_Suvenires.map(suvenir => suvenir[claveaSumar]);
-
-    const totalcomprado = valoresDeClave.reduce((acumulador, valor) => acumulador + Number(valor) ,0);
-    console.log(diccionario_Suvenires);
-    console.log(totalcomprado);
     
-    const ul = document.getElementById('Lista');
-
-    // Crear un nuevo elemento LI
-    const nuevoElementoLI = document.createElement('li');
-    
-    // Crear un nodo de texto para el contenido del LI
-    const contenido = document.createTextNode(suvenir.Nombre);
-    
-    // Agregar el nodo de texto al elemento LI
-    nuevoElementoLI.appendChild(contenido);
-    
-    // Agregar el nuevo elemento LI al ULeeeeee
-    ul.appendChild(nuevoElementoLI)
-    
-    if (totalcomprado > prosupuestoSuvenires){
-        document.getElementById("Alert2").innerHTML = "No te alcanza la plata";
-    }    
 
 
 }
