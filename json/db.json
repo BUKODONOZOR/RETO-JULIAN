@@ -1,0 +1,17 @@
+{
+    "tiendasuvenir":[
+        {
+        "id": 1,
+        "Nombre": "Chocolates",
+        "precio": "15000",
+        "Disponible" : 2
+    },
+
+    {
+        "id": 2,
+        "Nombre": "Matrioscas",
+        "precio": "15000",
+        "Disponible" : 2
+    }
+]
+}

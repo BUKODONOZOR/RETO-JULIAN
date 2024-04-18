@@ -20,41 +20,40 @@ const GetPlanViaje = () =>{
 
 let diccionario_Suvenires = [];
 let selected = true;
+let  basededatos= [];
 
-let Tiendadesuveniles = [
-
-    item1 = {
-        Nombre: "Chocolates",
-        precio: "15000",
-        Disponible : 2
-    },
-
-    item2 = {
-        Nombre: "Matrioscas",
-        precio: "150000",
-        Disponible: 4
-    }
-]
-
-
-
+axios.get('http://localhost:4000/tiendasuvenir')
+.then(response => {
+    basededatos = response.data;
+    console.log(basededatos);
+ })
+.catch(error => {
+    // Manejo de errores
+    console.error('Error:', error);
+});
 const getSuvenir = () =>{
+   
+   
+
     let NombreSuvenir = document.getElementById("NombreSuvenir").value;
     let cantidad = document.getElementById("ValorSuvenir").value;
     
+    
+    
+    
+
 
    
 
     
     const ValorClaveN ='Nombre';
-    const  ValoresdeClaveN  = Tiendadesuveniles.map(item => item[ValorClaveN]);
-    
+    const  ValoresdeClaveN  = basededatos.map(item => item[ValorClaveN]);
+    console.log(ValoresdeClaveN);
+    console.log(NombreSuvenir);
 
     if(ValoresdeClaveN.includes(NombreSuvenir)){
         
-        
-        
-        Tiendadesuveniles.forEach(element => {
+        basededatos.forEach(element => {
            
             if(element.Nombre == NombreSuvenir){
                 if(element.Disponible >0){
@@ -77,19 +76,20 @@ const getSuvenir = () =>{
                     const nuevoElementoLI = document.createElement('li');
                     const contenido = document.createTextNode(suvenir.Nombre);
                     nuevoElementoLI.appendChild(contenido);
-                    ul.appendChild(nuevoElementoLI)
+                    ul.appendChild(nuevoElementoLI);
+                    console.log(basededatos);
             
             
                 
                 }
                 else{
-                    document.getElementById("Alert2").innerHTML = "NO HAY PRODUCTOgi";
+                    document.getElementById("Alert2").innerHTML = "NO HAY PRODUCTO";
                 }
 
             }
             
         });
-        console.log(Tiendadesuveniles);
+        
         
 
     
