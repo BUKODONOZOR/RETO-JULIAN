@@ -1,0 +1,21 @@
+.subenires_section{
+    margin: auto;
+    width: 40%;
+    height: 50vh;
+    background-color: aqua;
+}
+
+.subenires_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.InputArea{
+    width: 50%;
+    height: 4vh;
+    margin-top: 2%;
+}
+
+.BtnArea{
+    width: 15%;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<html> 
+  
+<body> 
+  
+  
+  <label for="LugarDestino">Lugar: </label>
+  <input type="text" id="LugarDestino" >
+  <br> 
+  <label for="numeroDias">Dias: </label>
+  <input type="number" id="numeroDias" > 
+  <br> 
+  <label for="prosupuesto">Prosupuesto Para Actividades </label>
+  <input type="number" id="prosupuestoActividades" > 
+  <br>
+  <label for="prosupuesto">Prosupuesto Para Suvenires</label>
+  <input type="number" id="prosupuestoSuvenires" > 
+  <br>
+  <button type="button"  onclick="GetPlanViaje()"> 
+      click me!! 
+  </button> 
+  
+  <p id="Alert"></p>
+
+
+  <section class="subenires_section">
+    <article class="subenires_container"> 
+      <label for="Nombre"></label>
+      <input class="InputArea" name="Nombre" type="text" placeholder="Nombre de suvenir" id="NombreSuvenir">
+
+      <label  for="Valor"></label>
+      <input class="InputArea" name="Valor" type="number" placeholder="Valor del suvenir" id ="ValorSuvenir">
+
+      <input type="checkbox" id ="Stock">
+      <button  class="BtnArea" type="button"  onclick="getSuvenir()"> 
+        Agregar
+    </button> 
+
+    <ul id="Lista">
+    </ul>
+
+    <p id="Alert2"></p>
+
+    </article>
+  </section>
+</body> 
+<script src="/logic.js"></script>
+</html> 
