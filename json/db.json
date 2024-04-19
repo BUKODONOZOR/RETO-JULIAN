@@ -1,17 +1,16 @@
 {
-    "tiendasuvenir":[
-        {
-        "id": 1,
-        "Nombre": "Chocolates",
-        "precio": "15000",
-        "Disponible" : 2
-    },
-
+  "tiendasuvenir": [
     {
-        "id": 2,
-        "Nombre": "Matrioscas",
-        "precio": "15000",
-        "Disponible" : 2
+      "id": "1",
+      "Nombre": "Chocolates",
+      "precio": "15000",
+      "Disponible": 4
+    },
+    {
+      "id": "2",
+      "Nombre": "Matrioscas",
+      "precio": "15000",
+      "Disponible": 1
     }
-]
+  ]
 }

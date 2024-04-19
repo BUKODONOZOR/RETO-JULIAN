@@ -21,7 +21,8 @@ const GetPlanViaje = () =>{
 let diccionario_Suvenires = [];
 let selected = true;
 let  basededatos= [];
-
+const objectId = 2;
+url = `http://localhost:4000/tiendasuvenir/${objectId}`
 axios.get('http://localhost:4000/tiendasuvenir')
 .then(response => {
     basededatos = response.data;
@@ -38,11 +39,7 @@ const getSuvenir = () =>{
     let NombreSuvenir = document.getElementById("NombreSuvenir").value;
     let cantidad = document.getElementById("ValorSuvenir").value;
     
-    
-    
-    
-
-
+   
    
 
     
@@ -58,7 +55,7 @@ const getSuvenir = () =>{
             if(element.Nombre == NombreSuvenir){
                 if(element.Disponible >0){
                     console.log("Hay producto")
-                    element.Disponible = element.Disponible - cantidad;
+                    
                 
                     let suvenir = {
                         Nombre : NombreSuvenir,
@@ -78,8 +75,24 @@ const getSuvenir = () =>{
                     nuevoElementoLI.appendChild(contenido);
                     ul.appendChild(nuevoElementoLI);
                     console.log(basededatos);
-            
-            
+                    const newValue = element.Disponible = element.Disponible - cantidad;
+
+                    const newData = {
+                        Disponible: newValue, // Reemplaza "clave" con el nombre de la clave que deseas actualizar
+                        // Puedes agregar más claves aquí si necesitas actualizar varias claves a la vez
+                      };
+                      
+                      // Realiza la solicitud Axios para actualizar los datos
+                      axios.patch(url, newData)
+                        .then(response => {
+                          console.log('Datos actualizados:', response.data);
+                        })
+                        .catch(error => {
+                          console.error('Hubo un problema al actualizar los datos:', error);
+                        });
+                    
+                    
+                
                 
                 }
                 else{
